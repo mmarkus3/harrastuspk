@@ -1,0 +1,40 @@
+.or-container {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-transform: uppercase;
+  margin-top: 28px;
+  margin-bottom: 16px;
+}
+
+.or-container:before,
+.or-container:after {
+  background-color: #ebebeb;
+  content: '';
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.or-container:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.or-container:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+.new-container {
+  display: flex;
+  justify-content: center;
+}
+
+.selected-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 12px;
+}

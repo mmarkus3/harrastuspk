@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'login.title' | translate }}</ion-title>
+    <ion-buttons *ngIf="false" slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ion-padding">
+    <p>{{ 'login.info' | translate }}</p>
+  </div>
+  <div class="container ion-padding">
+    <div class="buttons">
+      <ion-button (click)="login('ios')" expand="round" color="dark">
+        <ion-icon slot="start" name="logo-apple"></ion-icon>
+        Sign in with Apple
+      </ion-button>
+      <ion-button (click)="login('google')" expand="round" color="danger">
+        <ion-icon slot="start" name="logo-google"></ion-icon>
+        Sign in with Google
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

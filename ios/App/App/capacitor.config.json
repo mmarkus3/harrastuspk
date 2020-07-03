@@ -1,0 +1,21 @@
+{
+  "appId": "fi.montonen.liikuntapk",
+  "appName": "liikunta-paivakirja",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    },
+    "CapacitorFirebaseAuth": {
+      "providers": ["google.com"],
+      "languageCode": "fi",
+      "nativeAuth": false,
+      "permissions": {
+        "google": ["profile"]
+      }
+    }
+  },
+  "cordova": {}
+}

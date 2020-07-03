@@ -1,0 +1,40 @@
+<ion-card>
+  <div class="title-line">
+    <div>
+      {{ item.name }}
+    </div>
+  </div>
+  <p class="desc">
+    {{ item.desc }}
+  </p>
+  <div>{{ item.duration }} {{ 'training.minutes' | translate }}</div>
+  <div *ngIf="item.feeling" class="feeling">
+    <ion-icon name="thumbs-up-outline" *ngIf="item.feeling <= 2"></ion-icon>
+    <ion-icon name="thumbs-down-outline" *ngIf="item.feeling> 2"></ion-icon>
+    {{ 'training.feelings.' + item.feeling | translate }}
+  </div>
+  <div *ngIf="!done.observers.length" class="done-button">
+    <ion-icon *ngIf="item.done" name="checkmark-circle-outline" color="success"></ion-icon>
+    <ion-icon *ngIf="!item.done" name="close-circle-outline" color="danger"></ion-icon>
+  </div>
+  <ion-fab-button
+    *ngIf="!item.done && done.observers.length"
+    class="done-button"
+    color="success"
+    size="small"
+    (click)="onDone(item)">
+    <ion-icon name="checkmark-circle-outline"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-button *ngIf="edit.observers.length" class="edit-button"
+    color="primary" size="small" (click)="onEdit(item)">
+    <ion-icon name="create-outline"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-button
+    *ngIf="removed.observers.length"
+    class="remove-button"
+    color="danger"
+    size="small"
+    (click)="delete(item)">
+    <ion-icon name="trash-outline"></ion-icon>
+  </ion-fab-button>
+</ion-card>

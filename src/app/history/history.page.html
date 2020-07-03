@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'history.title' | translate }}</ion-title>
+    <div slot="end" class="ion-margin">
+      <app-selected-day [currentDay]="currentDay" (changed)="onDayChange($event, selectedAthlete)"></app-selected-day>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ion-margin" *ngIf="items?.length> 0">
+    <hr />
+    <app-training-item *ngFor="let item of items" [item]="item"> </app-training-item>
+    <app-total-duration [items]="items"></app-total-duration>
+  </div>
+  <div *ngIf="items?.length === 0" class="ion-margin">
+    <p>{{ 'history.noItems' | translate }}</p>
+  </div>
+  <div *ngIf="!selectedAthlete" class="ion-margin">
+    <p>{{ 'general.noSelectedAthlete' | translate }}</p>
+  </div>
+</ion-content>

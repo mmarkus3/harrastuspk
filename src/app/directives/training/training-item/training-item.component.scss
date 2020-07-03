@@ -1,0 +1,40 @@
+ion-card {
+  height: 150px;
+  width: 100%;
+  padding: 8px;
+
+  .title-line {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .desc {
+    font-style: italic;
+  }
+
+  .feeling {
+    margin-top: 16px;
+    ion-icon {
+      margin-right: 8px;
+    }
+  }
+
+  .remove-button {
+    position: absolute;
+    bottom: 8px;
+    right: 2px;
+  }
+
+  .edit-button {
+    position: absolute;
+    bottom: 8px;
+    right: 58px;
+  }
+
+  .done-button {
+    position: absolute;
+    top: 8px;
+    right: 2px;
+  }
+}

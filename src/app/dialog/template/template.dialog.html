@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'template.title' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ion-padding">
+    <ng-container *ngIf="templates?.length> 0 && !editing">
+      <ion-item>
+        <ion-label position="stacked">{{ 'template.title' | translate }}</ion-label>
+        <ion-select [placeholder]="'general.select' | translate"
+          interface="popover" (ionChange)="onSelect($event)">
+          <ion-select-option *ngFor="let template of templates"
+            [value]="template">
+            {{ template.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div *ngIf="selectedTemplate" class="selected-buttons">
+        <ion-button (click)="onSave(selectedTemplate)">
+          <ion-icon slot="start" name="save-outline"></ion-icon>
+          {{ 'general.select' | translate }}
+        </ion-button>
+        <ion-button color="secondary" (click)="onEdit(selectedTemplate)">
+          <ion-icon slot="start" name="create-outline"></ion-icon>
+          {{ 'general.edit' | translate }}
+        </ion-button>
+      </div>
+      <div class="or-container">
+        {{'general.or' | translate}}
+      </div>
+    </ng-container>
+    <div class="new-container" *ngIf="templates?.length> 0 && !adding &&
+      !editing">
+      <ion-button (click)="adding=
+        !adding">{{ 'template.addNew' |
+        translate }}</ion-button>
+    </div>
+    <ng-container *ngIf="templates?.length === 0 || adding">
+      <app-add-template [item]="item" (saved)="onSave($event)"></app-add-template>
+      <ion-button expand="full" (click)="adding= !adding" color="light">
+        <ion-icon slot="start" name="close-outline"></ion-icon>
+        {{ 'general.cancel' | translate }}
+      </ion-button>
+    </ng-container>
+    <ng-container *ngIf="editing">
+      <app-add-template [item]="item" (saved)="onEdited($event)"></app-add-template>
+      <ion-button expand="full" (click)="editing= !editing" color="light">
+        <ion-icon slot="start" name="close-outline"></ion-icon>
+        {{ 'general.cancel' | translate }}
+      </ion-button>
+    </ng-container>
+  </div>
+</ion-content>

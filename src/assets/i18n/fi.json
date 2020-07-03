@@ -1,0 +1,88 @@
+{
+  "general": {
+    "title": "Harjoituspäiväkirja",
+    "select": "Valitse",
+    "ok": "OK",
+    "cancel": "Peruuta",
+    "save": "Tallenna",
+    "edit": "Muokkaa",
+    "removeTitle": "Oletko varma?",
+    "remove": "Haluatko poistaa {{ name }}?",
+    "done": "Valmis",
+    "doneText": "Haluatko merkitä tehdyksi {{ name }}?",
+    "logoutTitle": "Kirjaudu ulos?",
+    "logoutText": "Haluatko kirjautu ulos järjestelmästä?",
+    "noSelectedAthlete": "Ei valittua urheilijaa. Valitse urheilija etusivulta.",
+    "or": "TAI",
+    "howDidItFeel": "Miltä treeni tuntui?"
+  },
+  "nav": {
+    "home": "Koti",
+    "history": "Historia",
+    "stats": "Ennätykset"
+  },
+  "calendar": {
+    "title": "Kalenteri"
+  },
+  "training": {
+    "add": "Lisää harjoitus",
+    "title": "Harjoitus",
+    "type": "Harjoitus",
+    "duration": "Kesto",
+    "desc": "Lisätietoa",
+    "minutes": "minuuttia",
+    "totalDuration": "Tehtyjä harjoituksia yhteensä {{ total }} minuuttia.",
+    "ownDuration": "Muu kesto",
+    "durationTitle": "Kesto",
+    "durationMsg": "Syötä harjoituksen kesto",
+    "feelings": {
+      "0": "Erinomainen",
+      "1": "Hyvä",
+      "2": "Ihan ok",
+      "3": "Vähän väsynyt",
+      "4": "Väsynyt"
+    }
+  },
+  "record": {
+    "title": "Ennätykset",
+    "add": "Lisää ennätys",
+    "type": "Laji",
+    "value": "Ennätys",
+    "valueInfo": "20,12m",
+    "date": "Päivämäärä"
+  },
+  "history": {
+    "title": "Historia",
+    "noItems": "Ei harjoituksia valitulla päivällä. Yritä valita toinen päivä."
+  },
+  "login": {
+    "title": "Kirjaudu sisään",
+    "logout": "Kirjaudu ulos",
+    "info": "Kirjaudu sisään käyttämällä jotain seuraavista palveluista"
+  },
+  "athlete": {
+    "title": "Urheilijat",
+    "info": "Urheilijaa ei ole valittu. Aloita valitsemalla tai lisäämällä urheilija oikeasta yläkulmasta.",
+    "add": "Lisää urheilija",
+    "name": "Urheilijan nimi",
+    "users": "Käyttäjät",
+    "newUser": "Uusi käyttäjä (sähköposti)",
+    "userExample": "huoltaja@gmail.com",
+    "email": "Sähköposti"
+  },
+  "template": {
+    "title": "Harjoitusmallipohja",
+    "noTemplate": "Urheilijalla ei ole harjoitusmallipohjaa valittuna.<br/>Voit valita tai luoda harjoitusmallipohjan urheilijalle Harjoitusmallipohja-napista.",
+    "change": "Muuta harjoitusmallipohjaa",
+    "add": "Harjoitusmallipohja",
+    "addNew": "Lisää uusi harjoitusmallipohja",
+    "name": "Nimi",
+    "namePh": "Yleisurheilutreenit",
+    "type": "Harjoitus",
+    "addType": "Lisää uusi harjoitus"
+  },
+  "trainingtype": {
+    "title": "Uusi harjoitustyyppi",
+    "name_fi": "Suomenkielinen nimi"
+  }
+}

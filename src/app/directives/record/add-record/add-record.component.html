@@ -1,0 +1,30 @@
+<form class="ion-padding" [formGroup]="formGroup" (ngSubmit)="save()">
+  <ion-item [disabled]="item" *ngIf="types; else loadingTemplate">
+    <ion-label position="stacked">{{ 'record.type' | translate }}</ion-label>
+    <ion-select [placeholder]="'general.select' | translate"
+      formControlName="type" interface="popover">
+      <ion-select-option *ngFor="let type of types" [value]="type.key">
+        {{ type.name_fi }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div *ngIf="formGroup.value.type" class="margin">
+    <ion-item>
+      <ion-label position="stacked">{{ 'record.value' | translate }}</ion-label>
+      <ion-input [placeholder]="'record.valueInfo' | translate"
+        formControlName="value"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'record.date' | translate }}</ion-label>
+      <ion-datetime displayFormat="DD.MM.YYYY" min="2019"
+        formControlName="date"></ion-datetime>
+    </ion-item>
+  </div>
+  <div>
+    <ion-button expand="full" type="submit" [disabled]="!formGroup.valid">{{
+      'general.save' | translate }}</ion-button>
+  </div>
+</form>
+<ng-template #loadingTemplate>
+  <app-loading></app-loading>
+</ng-template>

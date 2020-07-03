@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'trainingtype.title' | translate }}</ion-title>
+    <ion-buttons *ngIf="false" slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form class="ion-padding" [formGroup]="formGroup" (ngSubmit)="save()">
+    <ion-item>
+      <ion-label position="stacked">{{ 'trainingtype.name_fi' | translate }}</ion-label>
+      <ion-input formControlName="name_fi"></ion-input>
+    </ion-item>
+    <div>
+      <ion-button expand="full" type="submit" [disabled]="!formGroup.valid">{{
+        'general.save' | translate }}</ion-button>
+    </div>
+  </form>
+</ion-content>

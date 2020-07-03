@@ -1,0 +1,7 @@
+{
+  "name": "liikunta-paivakirja",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

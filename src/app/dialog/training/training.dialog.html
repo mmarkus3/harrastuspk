@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'training.title' | translate }}</ion-title>
+    <ion-buttons *ngIf="false" slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ion-padding">
+    <app-add-training-item [item]="item" (saved)="onSave($event)"></app-add-training-item>
+  </div>
+</ion-content>
