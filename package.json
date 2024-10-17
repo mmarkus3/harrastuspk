@@ -29,7 +29,6 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^4.0.0",
     "cordova-plugin-apple-login": "^1.0.0",
-    "firebase": "^8.3.0",
     "ion2-calendar": "^3.5.0",
     "moment": "^2.26.0",
     "rxjs": "^7.8.1",
