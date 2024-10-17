@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Plugins } from '@capacitor/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -19,13 +19,13 @@ export class AddTrainingItemComponent implements OnInit, OnDestroy, OnChanges {
   @Input() currentDate: Date;
   @Input() item: Training;
   @Output() saved = new EventEmitter<Training>();
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   durations: number[];
   trainingTypes: Type[];
   private subs: Subscription[] = [];
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private storageService: StorageService,
     private templateService: TemplateService,
     private translateService: TranslateService

@@ -18,23 +18,22 @@ import { translateConfig } from './utility/translateConfig';
 registerLocaleData(localeFI);
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AppRoutingModule,
-    BrowserModule,
-    CalendarModule,
-    HttpClientModule,
-    IonicModule.forRoot(),
-    IonicStorageModule.forRoot(),
-    TranslateModule.forRoot(translateConfig),
-  ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: LOCALE_ID, useValue: 'fi-FI' },
-  ],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AppRoutingModule,
+        BrowserModule,
+        CalendarModule,
+        HttpClientModule,
+        IonicModule.forRoot(),
+        IonicStorageModule.forRoot(),
+        TranslateModule.forRoot(translateConfig),
+    ],
+    providers: [
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        { provide: LOCALE_ID, useValue: 'fi-FI' },
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

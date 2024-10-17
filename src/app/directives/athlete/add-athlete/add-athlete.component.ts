@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Athlete } from 'src/app/models';
 
 @Component({
@@ -10,9 +10,9 @@ import { Athlete } from 'src/app/models';
 })
 export class AddAthleteItemComponent {
   @Output() saved = new EventEmitter<Athlete>();
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
-  constructor(private formBuilder: FormBuilder, private fireAuth: AngularFireAuth) {
+  constructor(private formBuilder: UntypedFormBuilder, private fireAuth: AngularFireAuth) {
     this.formGroup = this.formBuilder.group({
       name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],

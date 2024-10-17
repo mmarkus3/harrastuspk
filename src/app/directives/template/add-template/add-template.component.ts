@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { PopoverController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { AddTrainingTypePopoverComponent } from 'src/app/dialog/training-type/training-type.popover';
@@ -15,13 +15,13 @@ import { storageKeys } from 'src/app/utility';
 export class AddTemplateComponent implements OnInit, OnDestroy {
   @Input() item: Template;
   @Output() saved = new EventEmitter<Template>();
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   types: Type[];
   selectedTypes: Type[];
   private sub: Subscription;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private storageService: StorageService,
     private trainingTypeService: TrainingTypeService,
     private popoverCtrl: PopoverController

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Athlete, Record, Type } from 'src/app/models';
 import { StorageService } from 'src/app/services';
@@ -14,11 +14,11 @@ export class AddRecordComponent implements OnInit, OnDestroy {
   @Input() selectedAthlete: Athlete;
   @Input() item: Record;
   @Output() saved = new EventEmitter<Record>();
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   types: Type[];
   private sub: Subscription;
 
-  constructor(private formBuilder: FormBuilder, private storageService: StorageService) {}
+  constructor(private formBuilder: UntypedFormBuilder, private storageService: StorageService) {}
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({

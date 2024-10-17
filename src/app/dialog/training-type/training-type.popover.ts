@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { PopoverController } from '@ionic/angular';
 
 @Component({
@@ -8,9 +8,9 @@ import { PopoverController } from '@ionic/angular';
   styleUrls: ['training-type.popover.scss'],
 })
 export class AddTrainingTypePopoverComponent {
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
-  constructor(private popover: PopoverController, private formBuilder: FormBuilder) {
+  constructor(private popover: PopoverController, private formBuilder: UntypedFormBuilder) {
     this.formGroup = this.formBuilder.group({
       key: [undefined],
       name_fi: [undefined, Validators.required],

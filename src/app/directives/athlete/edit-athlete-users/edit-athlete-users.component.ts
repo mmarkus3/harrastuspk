@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Athlete } from 'src/app/models';
 
 @Component({
@@ -10,10 +10,10 @@ import { Athlete } from 'src/app/models';
 export class EditAthleteUsersComponent implements OnInit {
   @Input() item: Athlete;
   @Output() saved = new EventEmitter<Athlete>();
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   users: string[];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: UntypedFormBuilder) {
     this.formGroup = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
     });
