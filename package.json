@@ -21,8 +21,8 @@
     "@angular/router": "^17.3.12",
     "@capacitor/core": "6.1.2",
     "@capacitor/ios": "^6.1.2",
-    "@ionic/angular": "^5.0.0",
-    "@ionic/core": "^5.0.0",
+    "@ionic/angular": "^7.0.0",
+    "@ionic/core": "^7.0.0",
     "@ionic/pwa-elements": "^3.3.0",
     "@ionic/storage": "^2.2.0",
     "@ionic/storage-angular": "^4.0.0",
@@ -32,8 +32,8 @@
     "firebase": "^8.3.0",
     "ion2-calendar": "^3.5.0",
     "moment": "^2.26.0",
-    "rxjs": "~6.5.5",
-    "tslib": "^2.1.0",
+    "rxjs": "^7.8.1",
+    "tslib": "^2.6.2",
     "zone.js": "~0.14.10"
   },
   "devDependencies": {
