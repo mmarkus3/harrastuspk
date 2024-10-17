@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Plugins } from '@capacitor/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '@scandium-oy/ngx-scandium';
 
 const { Modals } = Plugins;
 
@@ -11,7 +11,7 @@ const { Modals } = Plugins;
   templateUrl: 'login-icon.component.html',
 })
 export class LoginIconComponent {
-  constructor(public fireAuth: AngularFireAuth, private translate: TranslateService, private router: Router) {}
+  constructor(public fireAuth: AuthService, private translate: TranslateService, private router: Router) { }
 
   async logout() {
     const translateValues = await this.translate.get(['general.logoutTitle', 'general.logoutText']).toPromise();

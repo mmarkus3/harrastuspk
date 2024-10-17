@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthCredential, OAuthProvider } from '@angular/fire/auth';
+import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
 import { ModalController, Platform } from '@ionic/angular';
-import { cfaSignIn } from 'capacitor-firebase-auth';
-import { auth, User } from 'firebase/app';
+import { AuthService } from '@scandium-oy/ngx-scandium';
 
 declare var SignInWithApple: any;
 
@@ -12,50 +12,51 @@ declare var SignInWithApple: any;
   styleUrls: ['login.dialog.scss'],
 })
 export class LoginDialogComponent {
-  constructor(public fireAuth: AngularFireAuth, private modal: ModalController, private platform: Platform) {}
+  constructor(public fireAuth: AuthService, private modal: ModalController, private platform: Platform) { }
+
+  private loginWithCredential(credential: AuthCredential): void {
+    this.fireAuth.signInWithCredential(credential)
+      .then((_) => {
+        this.modal.dismiss();
+      }).catch((error) => {
+        console.error(error);
+      });
+  }
 
   login(type: string) {
-    let provider: auth.AuthProvider;
-    if (type === 'google') {
-      provider = new auth.GoogleAuthProvider();
-    } else if (type === 'ios') {
+    if (type === 'ios') {
       this.loginIos();
       return;
     }
-    if (this.platform.is('capacitor')) {
-      this.loginMobile(provider);
-    } else {
-      this.loginWeb(provider);
-    }
+    this.loginGoogle();
   }
 
-  private loginMobile(provider: auth.AuthProvider) {
-    cfaSignIn(provider.providerId).subscribe((user: User) => {
-      this.fireAuth.updateCurrentUser(user).then((_) => {
-        this.modal.dismiss();
-      });
-    });
-  }
-
-  private loginWeb(provider: auth.AuthProvider) {
-    this.fireAuth.signInWithPopup(provider).then((data) => {
-      this.modal.dismiss();
-    });
+  private loginGoogle() {
+    FirebaseAuthentication.signInWithGoogle({ customParameters: [{ key: 'prompt', value: 'select_account' }], skipNativeAuth: true }).then(
+      (result) => {
+        const credential = new OAuthProvider(result.credential.providerId).credential({
+          idToken: result.credential.idToken,
+        });
+        return this.loginWithCredential(credential);
+      },
+      (err) => {
+        console.error(err);
+      },
+    );
   }
 
   private loginIos() {
-    SignInWithApple.request({ requestedScopes: [SignInWithApple.Scope.Email, SignInWithApple.Scope.FullName] }).then(
-      (appleCredential) => {
-        const credential = new auth.OAuthProvider('apple.com').credential(appleCredential.identityToken);
-        this.fireAuth
-          .signInWithCredential(credential)
-          .then((_) => {
-            this.modal.dismiss();
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
+    FirebaseAuthentication.signInWithApple({ skipNativeAuth: true }).then(
+      (result) => {
+        const credential = new OAuthProvider('apple.com').credential({
+          idToken: result.credential.idToken,
+          rawNonce: result.credential.nonce,
+        });
+        return this.loginWithCredential(credential);
+      },
+      (err) => {
+        console.error(err);
+      },
     );
   }
 

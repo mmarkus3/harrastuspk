@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { ModalController, PopoverController } from '@ionic/angular';
-import { User } from 'firebase';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AthletePopoverComponent } from '../dialog/athlete/athlete.popover';
@@ -18,6 +16,8 @@ import {
 } from '../services';
 import { storageKeys } from '../utility';
 import { compareDates } from '../utility/date';
+import { AuthService } from '@scandium-oy/ngx-scandium';
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-home',
@@ -41,11 +41,11 @@ export class HomePage implements OnInit {
     private storageService: StorageService,
     private modalCtrl: ModalController,
     private popoverCtrl: PopoverController,
-    private fireAuth: AngularFireAuth
-  ) {}
+    private fireAuth: AuthService
+  ) { }
 
   ngOnInit() {
-    this.fireAuth.user.subscribe((user) => {
+    this.fireAuth.getUser().subscribe((user) => {
       if (user) {
         this.user = user;
         this.fetchData(user.uid);
@@ -110,18 +110,18 @@ export class HomePage implements OnInit {
         modal.present();
         modal.onDidDismiss().then((data) => {
           if (data.data) {
-            this.trainingService.update(data.data).then((_) => {});
+            this.trainingService.update(data.data).then((_) => { });
           }
         });
       });
   }
 
   onDelete(item: Training) {
-    this.trainingService.remove(item).then((_) => {});
+    this.trainingService.remove(item).then((_) => { });
   }
 
   onDone(item: Training) {
-    this.trainingService.done(item).then((_) => {});
+    this.trainingService.done(item).then((_) => { });
   }
 
   private getItems() {

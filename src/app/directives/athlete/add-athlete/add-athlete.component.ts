@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { AuthService } from '@scandium-oy/ngx-scandium';
 import { Athlete } from 'src/app/models';
 
 @Component({
@@ -12,7 +12,7 @@ export class AddAthleteItemComponent {
   @Output() saved = new EventEmitter<Athlete>();
   formGroup: UntypedFormGroup;
 
-  constructor(private formBuilder: UntypedFormBuilder, private fireAuth: AngularFireAuth) {
+  constructor(private formBuilder: UntypedFormBuilder, private fireAuth: AuthService) {
     this.formGroup = this.formBuilder.group({
       name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
@@ -23,7 +23,7 @@ export class AddAthleteItemComponent {
   }
 
   async save() {
-    const user = await this.fireAuth.currentUser;
+    const user = await this.fireAuth.getCurrentUser();
     const data = this.formGroup.value;
     data.users = [data.email];
     if (data.email !== user.email) {
