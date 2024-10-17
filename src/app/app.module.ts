@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import localeFI from '@angular/common/locales/fi';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
@@ -17,23 +17,17 @@ import { translateConfig } from './utility/translateConfig';
 
 registerLocaleData(localeFI);
 
-@NgModule({
-    declarations: [AppComponent],
-    imports: [
-        AngularFireModule.initializeApp(environment.firebase),
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         AppRoutingModule,
         BrowserModule,
         CalendarModule,
-        HttpClientModule,
         IonicModule.forRoot(),
         IonicStorageModule.forRoot(),
-        TranslateModule.forRoot(translateConfig),
-    ],
-    providers: [
+        TranslateModule.forRoot(translateConfig)], providers: [
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         { provide: LOCALE_ID, useValue: 'fi-FI' },
-    ],
-    bootstrap: [AppComponent]
-})
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}
