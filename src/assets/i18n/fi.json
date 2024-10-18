@@ -18,6 +18,10 @@
     "selectDay": "Valitse päivä",
     "clear": "Tyhjennä"
   },
+  "update": {
+    "title": "Uusi versio saatavilla",
+    "message": "Valitse Ok päivittääksesi"
+  },
   "nav": {
     "home": "Koti",
     "history": "Historia",
