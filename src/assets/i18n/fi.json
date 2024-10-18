@@ -15,7 +15,8 @@
     "noSelectedAthlete": "Ei valittua urheilijaa. Valitse urheilija etusivulta.",
     "or": "TAI",
     "howDidItFeel": "Miltä treeni tuntui?",
-    "selectDay": "Valitse päivä"
+    "selectDay": "Valitse päivä",
+    "clear": "Tyhjennä"
   },
   "nav": {
     "home": "Koti",
