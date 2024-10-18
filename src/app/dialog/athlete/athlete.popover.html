@@ -13,37 +13,51 @@
   <!-- Adding -->
   <ng-container *ngIf="adding">
     <app-add-athlete-item (saved)="save($event)"></app-add-athlete-item>
-    <ion-button expand="full" (click)="adding= !adding" color="light">
-      <ion-icon slot="start" name="close-outline"></ion-icon>
+    <ion-button expand="full"
+      (click)="adding= !adding"
+      color="light">
+      <ion-icon slot="start"
+        name="close-outline"></ion-icon>
       {{ 'general.cancel' | translate }}
     </ion-button>
   </ng-container>
   <!-- Editing -->
   <ng-container *ngIf="selectedAthlete">
-    <app-edit-athlete-users (saved)="edit($event)" [item]="selectedAthlete"></app-edit-athlete-users>
-    <ion-button expand="full" (click)="selectedAthlete= null" color="light">
-      <ion-icon slot="start" name="close-outline"></ion-icon>
+    <app-edit-athlete-users (saved)="edit($event)"
+      [item]="selectedAthlete"></app-edit-athlete-users>
+    <ion-button expand="full"
+      (click)="selectedAthlete= null"
+      color="light">
+      <ion-icon slot="start"
+        name="close-outline"></ion-icon>
       {{ 'general.cancel' | translate }}
     </ion-button>
   </ng-container>
   <!-- Show -->
   <ng-container *ngIf="!adding && !selectedAthlete">
     <ion-list *ngIf="athletes; else loadingTemplate">
-      <ion-item *ngFor="let athlete of athletes" (click)="select(athlete)"
+      <ion-item *ngFor="let athlete of athletes"
+        (click)="select(athlete)"
         button="true">
-        <ion-button slot="start" shape="round" fill="outline" color="dark">
+        <ion-button slot="start"
+          shape="round"
+          fill="outline"
+          color="dark">
           <span>{{ athlete.name[0] }}</span>
         </ion-button>
         <ion-label>
           {{ athlete.name }}
         </ion-label>
-        <ion-button slot="end" (click)="selectedAthlete= athlete">
+        <ion-button slot="end"
+          (click)="selectedAthlete= athlete">
           <ion-icon name="create-outline"></ion-icon>
         </ion-button>
       </ion-item>
       <ion-item-divider color="light"></ion-item-divider>
-      <ion-item button="true" (click)="adding= !adding">
-        <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+      <ion-item button="true"
+        (click)="adding= !adding">
+        <ion-icon name="add-circle-outline"
+          slot="start"></ion-icon>
         <ion-label>
           {{ 'athlete.add' | translate }}
         </ion-label>
@@ -52,5 +66,5 @@
   </ng-container>
 </ion-content>
 <ng-template #loadingTemplate>
-  <app-loading></app-loading>
+  <app-loading-icon></app-loading-icon>
 </ng-template>

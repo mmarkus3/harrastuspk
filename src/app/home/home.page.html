@@ -4,10 +4,12 @@
       {{ 'general.title' | translate }}
     </ion-title>
     <ion-buttons slot="end">
-      <span *ngIf="selectedAthlete" (click)="onAthlete($event)">{{
+      <span *ngIf="selectedAthlete"
+        (click)="onAthlete($event)">{{
         selectedAthlete.name }}</span>
       <ion-button (click)="onAthlete($event)">
-        <ion-icon slot="icon-only" name="people-circle-outline"></ion-icon>
+        <ion-icon slot="icon-only"
+          name="people-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -22,21 +24,25 @@
     <p class="ion-margin">{{ 'athlete.info' | translate }}</p>
   </div>
   <ng-container *ngIf="selectedAthlete">
-    <div class="ion-margin" *ngIf="adding">
-      <app-add-training-item
-        [selectedAthlete]="selectedAthlete"
+    <div class="ion-margin"
+      *ngIf="adding">
+      <app-add-training-item [selectedAthlete]="selectedAthlete"
         [currentDate]="currentDate"
         (saved)="saved($event)"></app-add-training-item>
-      <app-template [athlete]="selectedAthlete" [user]="user"></app-template>
-      <ion-button expand="full" (click)="adding= !adding" color="light">
-        <ion-icon slot="start" name="close-outline"></ion-icon>
+      <app-template [athlete]="selectedAthlete"
+        [user]="user"></app-template>
+      <ion-button expand="full"
+        (click)="adding= !adding"
+        color="light">
+        <ion-icon slot="start"
+          name="close-outline"></ion-icon>
         {{ 'general.cancel' | translate }}
       </ion-button>
     </div>
     <ng-container *ngIf="!adding">
-      <div class="ion-margin" *ngIf="items; else loadingTemplate">
-        <app-training-item
-          *ngFor="let item of items"
+      <div class="ion-margin"
+        *ngIf="items; else loadingTemplate">
+        <app-training-item *ngFor="let item of items"
           [item]="item"
           (removed)="onDelete($event)"
           (done)="onDone($event)"
@@ -44,8 +50,10 @@
         </app-training-item>
       </div>
       <div class="ion-margin">
-        <ion-button expand="full" (click)="adding= !adding">
-          <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+        <ion-button expand="full"
+          (click)="adding= !adding">
+          <ion-icon slot="start"
+            name="add-circle-outline"></ion-icon>
           {{ 'training.add' | translate }}
         </ion-button>
       </div>
@@ -57,5 +65,5 @@
   </ng-container>
 </ion-content>
 <ng-template #loadingTemplate>
-  <app-loading></app-loading>
+  <app-loading-icon></app-loading-icon>
 </ng-template>

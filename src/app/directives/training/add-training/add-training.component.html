@@ -1,19 +1,24 @@
-<form class="ion-padding-bottom" [formGroup]="formGroup" (ngSubmit)="save()">
+<form class="ion-padding-bottom"
+  [formGroup]="formGroup"
+  (ngSubmit)="save()">
   <ion-item *ngIf="trainingTypes; else loadingTemplate">
     <ion-label position="stacked">{{ 'training.type' | translate }}</ion-label>
     <ion-select [placeholder]="'general.select' | translate"
-      formControlName="type" interface="popover">
+      formControlName="type"
+      interface="popover">
       <ion-select-option *ngFor="let type of trainingTypes"
         [value]="type.key">
         {{ type.name_fi }}
       </ion-select-option>
     </ion-select>
   </ion-item>
-  <div *ngIf="formGroup.value.type" class="margin">
+  <div *ngIf="formGroup.value.type"
+    class="margin">
     <ion-item *ngIf="durations; else loadingTemplate">
       <ion-label position="stacked">{{ 'training.duration' | translate }}</ion-label>
       <ion-select [placeholder]="'general.select' | translate"
-        formControlName="duration" interface="popover"
+        formControlName="duration"
+        interface="popover"
         (ionChange)="onDurationChange($event)">
         <ion-select-option *ngFor="let duration of durations"
           [value]="duration">
@@ -26,14 +31,17 @@
     </ion-item>
     <ion-item>
       <ion-textarea [placeholder]="'training.desc' | translate"
-        formControlName="desc" rows="3"></ion-textarea>
+        formControlName="desc"
+        rows="3"></ion-textarea>
     </ion-item>
     <div>
-      <ion-button expand="full" type="submit" [disabled]="!formGroup.valid">{{
+      <ion-button expand="full"
+        type="submit"
+        [disabled]="!formGroup.valid">{{
         'general.save' | translate }}</ion-button>
     </div>
   </div>
 </form>
 <ng-template #loadingTemplate>
-  <app-loading></app-loading>
+  <app-loading-icon></app-loading-icon>
 </ng-template>

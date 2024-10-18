@@ -1,4 +1,6 @@
-<form class="ion-padding-bottom" [formGroup]="formGroup" (ngSubmit)="save()">
+<form class="ion-padding-bottom"
+  [formGroup]="formGroup"
+  (ngSubmit)="save()">
   <div class="margin">
     <ion-item>
       <ion-label position="stacked">{{ 'template.name' | translate }}</ion-label>
@@ -9,30 +11,38 @@
   <ion-item *ngIf="types; else loadingTemplate">
     <ion-label position="stacked">{{ 'template.type' | translate }}</ion-label>
     <ion-select [placeholder]="'general.select' | translate"
-      interface="popover" (ionChange)="onSelect($event)">
-      <ion-select-option *ngFor="let type of types" [value]="type">
+      interface="popover"
+      (ionChange)="onSelect($event)">
+      <ion-select-option *ngFor="let type of types"
+        [value]="type">
         {{ type.name_fi }}
       </ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-button (click)="onNewType()" class="new-type-container" fill="outline"
+  <ion-button (click)="onNewType()"
+    class="new-type-container"
+    fill="outline"
     size="small">{{
     'template.addType' |
     translate }}</ion-button>
   <ion-list>
     <ion-item *ngFor="let selectedType of selectedTypes">
       {{ selectedType.name_fi }}
-      <ion-button slot="end" color="danger" (click)="onDelete(selectedType)">
+      <ion-button slot="end"
+        color="danger"
+        (click)="onDelete(selectedType)">
         <ion-icon name="trash-outline"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
   <div>
-    <ion-button expand="full" type="submit" [disabled]="!formGroup.valid ||
+    <ion-button expand="full"
+      type="submit"
+      [disabled]="!formGroup.valid ||
       selectedTypes?.length === 0">{{
       'general.save' | translate }}</ion-button>
   </div>
 </form>
 <ng-template #loadingTemplate>
-  <app-loading></app-loading>
+  <app-loading-icon></app-loading-icon>
 </ng-template>
