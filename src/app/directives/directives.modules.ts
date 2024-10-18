@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { TimestampPipe } from '../pipes/timestamp/timestamp.pipe';
 import { AddAthleteItemComponent } from './athlete/add-athlete/add-athlete.component';
 import { EditAthleteUsersComponent } from './athlete/edit-athlete-users/edit-athlete-users.component';
 import { LoadingComponent } from './loading/loading.component';
@@ -37,6 +38,7 @@ import { TrainingItemComponent } from './training/training-item/training-item.co
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
+    TimestampPipe,
   ],
   exports: [
     AddAthleteItemComponent,

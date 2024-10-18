@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '@scandium-oy/ngx-scandium';
 import { map } from 'rxjs/operators';
 import { Athlete, Training } from '../models';
 import { TrainingsService } from '../services';
 import { storageKeys } from '../utility';
 import { compareDates } from '../utility/date';
-import { StorageService } from '@scandium-oy/ngx-scandium';
 
 @Component({
   selector: 'app-history',
@@ -32,14 +32,14 @@ export class HistoryPage implements OnInit {
   onDayChange(newdate: string, selectedAthlete: Athlete) {
     const date = new Date(newdate);
     this.currentDate = date;
-    this.currentDay = date.getDate() + '.' + (date.getMonth() + 1);
+    this.currentDay = date.toISOString();
     this.getItems(selectedAthlete).subscribe((items) => (this.items = items));
   }
 
   private getItems(selectedAthlete: Athlete) {
     return this.trainingService.getList(selectedAthlete.guid).pipe(
       map((items) => {
-        return items.filter((item) => compareDates(item.date, this.currentDate) === 0);
+        return items.filter((item) => compareDates(item.date, this.currentDate));
       })
     );
   }

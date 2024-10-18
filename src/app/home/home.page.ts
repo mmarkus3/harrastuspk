@@ -126,7 +126,7 @@ export class HomePage implements OnInit {
   private getItems() {
     return this.trainingService.getList(this.selectedAthlete.guid).pipe(
       map((items) => {
-        return items.filter((item) => compareDates(item.date, this.currentDate) === 0);
+        return items.filter((item) => compareDates(item.date, this.currentDate));
       })
     );
   }

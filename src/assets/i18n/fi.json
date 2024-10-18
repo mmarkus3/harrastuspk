@@ -14,7 +14,8 @@
     "logoutText": "Haluatko kirjautu ulos järjestelmästä?",
     "noSelectedAthlete": "Ei valittua urheilijaa. Valitse urheilija etusivulta.",
     "or": "TAI",
-    "howDidItFeel": "Miltä treeni tuntui?"
+    "howDidItFeel": "Miltä treeni tuntui?",
+    "selectDay": "Valitse päivä"
   },
   "nav": {
     "home": "Koti",

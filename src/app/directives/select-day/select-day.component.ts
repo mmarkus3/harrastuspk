@@ -25,7 +25,7 @@ export class SelectDayComponent {
   format = input('dd.MM.yyyy');
   minDate = input<string>();
   maxDate = input<string>();
-  name = input('kanban.selectDay');
+  name = input('general.selectDay');
   size = input('default');
   presentation = input('date');
 

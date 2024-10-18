@@ -48,6 +48,6 @@ export class DateNavigationComponent implements OnInit, OnChanges {
   }
 
   private setCurrentDay(date: Date) {
-    this.currentDay = date.getDate() + '.' + (date.getMonth() + 1);
+    this.currentDay = date.toISOString();
   }
 }

@@ -1,6 +1,20 @@
+import { Timestamp } from '@angular/fire/firestore';
+import { format } from 'date-fns';
+
+export const isTimestamp = (object: any): object is Timestamp => {
+  if (object == null) {
+    return false;
+  }
+  return 'toDate' in object;
+};
+
+export function convertTimestamp(item: any): Date {
+  const ret = isTimestamp(item) ? item.toDate() : item;
+  return ret;
+}
+
 export const compareDates = (date1: Date, date2: Date) => {
-  const time1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
-  const time2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
-  const ms = Math.abs(time1 - time2);
-  return Math.floor(ms / 1000 / 60 / 60 / 24);
+  const date = format(convertTimestamp(date1), 'dd.MM.yyyy');
+  const today = format(convertTimestamp(date2), 'dd.MM.yyyy');
+  return date === today;
 };
