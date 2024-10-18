@@ -1,0 +1,20 @@
+ion-content.datetime-container {
+  --background: transparent;
+
+  .center {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.select-date {
+  margin-top: 2em;
+  border-radius: var(--app-card-radius);
+}
+
+ion-button {
+  text-transform: none;
+  font-size: var(--app-font-size, 1em);
+  --background: var(--app-button-background, none);
+}

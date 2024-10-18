@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Athlete, Training } from '../models';
-import { StorageService, TrainingsService } from '../services';
+import { TrainingsService } from '../services';
 import { storageKeys } from '../utility';
 import { compareDates } from '../utility/date';
+import { StorageService } from '@scandium-oy/ngx-scandium';
 
 @Component({
   selector: 'app-history',
@@ -16,21 +17,22 @@ export class HistoryPage implements OnInit {
   items: Training[];
   selectedAthlete: Athlete;
 
-  constructor(private trainingService: TrainingsService, private storageService: StorageService) {}
+  constructor(private trainingService: TrainingsService, private storageService: StorageService) { }
 
   ngOnInit() {
     this.storageService.getValue<Athlete>(storageKeys.selectedAthlete).subscribe((selected) => {
       if (selected) {
         this.selectedAthlete = selected;
         const now = new Date();
-        this.onDayChange(now, selected);
+        this.onDayChange(now.toISOString(), selected);
       }
     });
   }
 
-  onDayChange(newdate: Date, selectedAthlete: Athlete) {
-    this.currentDate = newdate;
-    this.currentDay = newdate.getDate() + '.' + (newdate.getMonth() + 1);
+  onDayChange(newdate: string, selectedAthlete: Athlete) {
+    const date = new Date(newdate);
+    this.currentDate = date;
+    this.currentDay = date.getDate() + '.' + (date.getMonth() + 1);
     this.getItems(selectedAthlete).subscribe((items) => (this.items = items));
   }
 

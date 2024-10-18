@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Type } from '../models';
-import { FirestoreService } from './firestore.service';
+import { FirestoreService } from '@scandium-oy/ngx-scandium';
 
 const itemCollection = 'training-types';
 
@@ -9,7 +9,7 @@ const itemCollection = 'training-types';
   providedIn: 'root',
 })
 export class TrainingTypeService {
-  constructor(private firestore: FirestoreService) {}
+  constructor(private firestore: FirestoreService) { }
 
   save(item: Type) {
     return this.firestore.save<Type>(itemCollection, item);

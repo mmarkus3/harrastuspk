@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '@angular/fire/auth';
 import { ModalController, PopoverController } from '@ionic/angular';
+import { AuthService, StorageService } from '@scandium-oy/ngx-scandium';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AthletePopoverComponent } from '../dialog/athlete/athlete.popover';
@@ -9,15 +11,12 @@ import { Athlete, Training } from '../models';
 import {
   DurationService,
   RecordTypeService,
-  StorageService,
   TemplateService,
   TrainingsService,
   TrainingTypeService,
 } from '../services';
 import { storageKeys } from '../utility';
 import { compareDates } from '../utility/date';
-import { AuthService } from '@scandium-oy/ngx-scandium';
-import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-home',
@@ -58,8 +57,8 @@ export class HomePage implements OnInit {
           }
         });
       } else {
-        this.modalCtrl.create({ component: LoginDialogComponent }).then((modal) => {
-          modal.present();
+        this.modalCtrl.create({ component: LoginDialogComponent }).then((m) => {
+          m.present();
         });
       }
     });
@@ -106,9 +105,9 @@ export class HomePage implements OnInit {
   onEdit(item: Training) {
     this.modalCtrl
       .create({ component: EditTrainingDialogComponent, componentProps: { training: item } })
-      .then((modal) => {
-        modal.present();
-        modal.onDidDismiss().then((data) => {
+      .then((m) => {
+        m.present();
+        m.onDidDismiss().then((data) => {
           if (data.data) {
             this.trainingService.update(data.data).then((_) => { });
           }

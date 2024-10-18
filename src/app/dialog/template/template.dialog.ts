@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
+import { StorageService } from '@scandium-oy/ngx-scandium';
 import { Subscription } from 'rxjs';
 import { Template } from 'src/app/models';
-import { StorageService } from 'src/app/services';
 import { storageKeys } from 'src/app/utility';
 
 @Component({
@@ -18,7 +18,7 @@ export class TemplateDialogComponent implements OnInit, OnDestroy {
   editing: boolean;
   selectedTemplate: Template;
 
-  constructor(private modal: ModalController, private storageService: StorageService, navParams: NavParams) {
+  constructor(private _modal: ModalController, private storageService: StorageService, navParams: NavParams) {
     this.item = navParams.get('template');
   }
 
@@ -38,7 +38,7 @@ export class TemplateDialogComponent implements OnInit, OnDestroy {
   }
 
   onSave(item: Template) {
-    this.modal.dismiss(item);
+    this._modal.dismiss(item);
   }
 
   onEdit(item: Template) {
@@ -52,6 +52,6 @@ export class TemplateDialogComponent implements OnInit, OnDestroy {
   }
 
   dismiss() {
-    this.modal.dismiss();
+    this._modal.dismiss();
   }
 }

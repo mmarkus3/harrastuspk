@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Template } from '../models';
-import { FirestoreService } from './firestore.service';
+import { FirestoreService } from '@scandium-oy/ngx-scandium';
+import { where } from '@angular/fire/firestore';
 
 const itemCollection = 'templates';
 
@@ -9,14 +10,14 @@ const itemCollection = 'templates';
   providedIn: 'root',
 })
 export class TemplateService {
-  constructor(private firestore: FirestoreService) {}
+  constructor(private firestore: FirestoreService) { }
 
   save(item: Template) {
     return this.firestore.save<Template>(itemCollection, item);
   }
 
   remove(item: Template) {
-    return this.firestore.remove<Template>(itemCollection, item);
+    return this.firestore.delete<Template>(itemCollection, item);
   }
 
   update(item: Template) {
@@ -24,7 +25,7 @@ export class TemplateService {
   }
 
   getList(authorGuid: string): Observable<Template[]> {
-    return this.firestore.getList<Template>(itemCollection, undefined, (ref) => ref.where('author', '==', authorGuid));
+    return this.firestore.getList<Template>(itemCollection, undefined, [where('author', '==', authorGuid)]);
   }
 
   get(guid: string): Observable<Template> {

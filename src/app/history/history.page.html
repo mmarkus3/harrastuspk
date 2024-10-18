@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>{{ 'history.title' | translate }}</ion-title>
     <div slot="end" class="ion-margin">
-      <app-selected-day [currentDay]="currentDay" (changed)="onDayChange($event, selectedAthlete)"></app-selected-day>
+      <app-select-day [value]="currentDay" (changed)="onDayChange($event, selectedAthlete)"></app-select-day>
     </div>
   </ion-toolbar>
 </ion-header>

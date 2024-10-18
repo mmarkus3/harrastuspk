@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Athlete, Record, Type } from 'src/app/models';
-import { StorageService } from 'src/app/services';
+import { StorageService } from '@scandium-oy/ngx-scandium';
 import { storageKeys } from 'src/app/utility';
 
 @Component({
@@ -18,7 +18,7 @@ export class AddRecordComponent implements OnInit, OnDestroy {
   types: Type[];
   private sub: Subscription;
 
-  constructor(private formBuilder: UntypedFormBuilder, private storageService: StorageService) {}
+  constructor(private formBuilder: UntypedFormBuilder, private storageService: StorageService) { }
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({

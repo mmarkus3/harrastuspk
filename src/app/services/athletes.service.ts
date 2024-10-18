@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Athlete } from '../models';
-import { FirestoreService } from './firestore.service';
-import { AuthService } from '@scandium-oy/ngx-scandium';
+import { AuthService, FirestoreService } from '@scandium-oy/ngx-scandium';
+import { where } from '@angular/fire/firestore';
 
 const itemCollection = 'athletes';
 
@@ -17,7 +17,7 @@ export class AthletesService {
   }
 
   remove(item: Athlete) {
-    return this.firestore.remove<Athlete>(itemCollection, item);
+    return this.firestore.delete<Athlete>(itemCollection, item);
   }
 
   update(item: Athlete) {
@@ -26,9 +26,7 @@ export class AthletesService {
 
   async getList(): Promise<Observable<Athlete[]>> {
     const user = await this.fireAuth.getCurrentUser();
-    return this.firestore.getList<Athlete>(itemCollection, undefined, (ref) =>
-      ref.where('users', 'array-contains', user.email)
-    );
+    return this.firestore.getList<Athlete>(itemCollection, undefined, [where('users', 'array-contains', user.email)]);
   }
 
   get(guid: string): Observable<Athlete> {

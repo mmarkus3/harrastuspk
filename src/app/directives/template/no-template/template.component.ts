@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { User } from '@angular/fire/auth';
 import { ModalController } from '@ionic/angular';
-import { User } from 'firebase';
+import { StorageService } from '@scandium-oy/ngx-scandium';
 import { TemplateDialogComponent } from 'src/app/dialog/template/template.dialog';
 import { Athlete, Template } from 'src/app/models';
-import { AthletesService, StorageService, TemplateService } from 'src/app/services';
+import { AthletesService, TemplateService } from 'src/app/services';
 import { storageKeys } from 'src/app/utility';
 
 @Component({
@@ -19,15 +20,15 @@ export class TemplateComponent implements OnInit {
     private modalCtrl: ModalController,
     private templateService: TemplateService,
     private athletesService: AthletesService,
-    private storageService: StorageService
-  ) {}
+    private storageService: StorageService,
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   addTemplate() {
-    this.modalCtrl.create({ component: TemplateDialogComponent, componentProps: {} }).then((modal) => {
-      modal.present();
-      modal.onDidDismiss().then((data) => {
+    this.modalCtrl.create({ component: TemplateDialogComponent, componentProps: {} }).then((m) => {
+      m.present();
+      m.onDidDismiss().then((data) => {
         if (data.data) {
           const template: Template = data.data;
           if (template.guid) {

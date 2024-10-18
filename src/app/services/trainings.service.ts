@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Training } from '../models';
-import { FirestoreService } from './firestore.service';
+import { FirestoreService } from '@scandium-oy/ngx-scandium';
+import { where } from '@angular/fire/firestore';
 
 const itemCollection = 'items';
 
@@ -9,18 +10,18 @@ const itemCollection = 'items';
   providedIn: 'root',
 })
 export class TrainingsService {
-  constructor(private firestore: FirestoreService) {}
+  constructor(private firestore: FirestoreService) { }
 
   save(item: Training) {
     return this.firestore.save<Training>(itemCollection, item);
   }
 
   remove(item: Training) {
-    return this.firestore.remove<Training>(itemCollection, item);
+    return this.firestore.delete<Training>(itemCollection, item);
   }
 
   done(item: Training) {
-    return this.firestore.done<Training>(itemCollection, item);
+    return this.firestore.updateOnly(itemCollection, item.guid, { done: true });
   }
 
   update(item: Training) {
@@ -28,8 +29,7 @@ export class TrainingsService {
   }
 
   getList(athleteGuid: string): Observable<Training[]> {
-    return this.firestore.getList<Training>(itemCollection, undefined, (ref) =>
-      ref.where('athlete', '==', athleteGuid).where('deleted', '==', false)
+    return this.firestore.getList<Training>(itemCollection, undefined, [where('athlete', '==', athleteGuid), where('deleted', '==', false)]
     );
   }
 }

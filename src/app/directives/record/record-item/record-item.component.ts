@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Record, Type } from 'src/app/models';
-import { StorageService } from 'src/app/services';
+import { StorageService } from '@scandium-oy/ngx-scandium';
 import { storageKeys } from 'src/app/utility';
 
 @Component({
@@ -12,7 +12,7 @@ export class RecordItemComponent implements OnInit {
   @Input() item: Record;
   @Output() edit = new EventEmitter<Record>();
 
-  constructor(private storageService: StorageService) {}
+  constructor(private storageService: StorageService) { }
 
   ngOnInit() {
     this.storageService.getValue<Type[]>(storageKeys.recordTypes).subscribe((values) => {

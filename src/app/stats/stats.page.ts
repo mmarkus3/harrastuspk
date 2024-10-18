@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { StorageService } from '@scandium-oy/ngx-scandium';
 import { Subscription } from 'rxjs';
 import { EditRecordDialogComponent } from '../dialog/record/edit-record.dialog';
 import { Athlete, Record } from '../models';
-import { RecordsService, StorageService } from '../services';
+import { RecordsService } from '../services';
 import { storageKeys } from '../utility';
 
 @Component({
@@ -21,7 +22,7 @@ export class StatsPage implements OnInit {
     private storageService: StorageService,
     private recordService: RecordsService,
     private modalCtrl: ModalController
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.storageService.getValue<Athlete>(storageKeys.selectedAthlete).subscribe((selected) => {
@@ -40,13 +41,13 @@ export class StatsPage implements OnInit {
   }
 
   onEdit(record: Record) {
-    this.modalCtrl.create({ component: EditRecordDialogComponent, componentProps: { record } }).then((modal) => {
-      modal.onDidDismiss().then((data) => {
+    this.modalCtrl.create({ component: EditRecordDialogComponent, componentProps: { record } }).then((m) => {
+      m.onDidDismiss().then((data) => {
         if (data.data) {
           this.recordService.update(data.data);
         }
       });
-      modal.present();
+      m.present();
     });
   }
 

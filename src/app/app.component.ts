@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Plugins, StatusBarStyle } from '@capacitor/core';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
-
-const { SplashScreen, StatusBar } = Plugins;
+import { SplashScreen } from '@capacitor/splash-screen';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +20,7 @@ export class AppComponent {
       console.warn(err);
     });
     StatusBar.setStyle({
-      style: StatusBarStyle.Light,
+      style: Style.Light,
     }).catch((err) => {
       console.warn(err);
     });

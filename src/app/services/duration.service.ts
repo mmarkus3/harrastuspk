@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { FirestoreService } from '@scandium-oy/ngx-scandium';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FirestoreService } from './firestore.service';
 
 const itemCollection = 'durations';
 
@@ -9,7 +9,7 @@ const itemCollection = 'durations';
   providedIn: 'root',
 })
 export class DurationService {
-  constructor(private firestore: FirestoreService) {}
+  constructor(private firestore: FirestoreService) { }
 
   getList(): Observable<number[]> {
     return this.firestore.getList<any>(itemCollection).pipe(

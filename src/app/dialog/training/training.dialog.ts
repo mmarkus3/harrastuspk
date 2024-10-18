@@ -10,15 +10,15 @@ import { Training } from 'src/app/models';
 export class EditTrainingDialogComponent {
   item: Training;
 
-  constructor(private modal: ModalController, navParams: NavParams) {
+  constructor(private _modal: ModalController, navParams: NavParams) {
     this.item = navParams.get('training');
   }
 
   onSave(item: Training) {
-    this.modal.dismiss(item);
+    this._modal.dismiss(item);
   }
 
   dismiss() {
-    this.modal.dismiss();
+    this._modal.dismiss();
   }
 }

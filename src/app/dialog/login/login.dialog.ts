@@ -12,12 +12,12 @@ declare var SignInWithApple: any;
   styleUrls: ['login.dialog.scss'],
 })
 export class LoginDialogComponent {
-  constructor(public fireAuth: AuthService, private modal: ModalController, private platform: Platform) { }
+  constructor(public fireAuth: AuthService, private _modal: ModalController, private platform: Platform) { }
 
   private loginWithCredential(credential: AuthCredential): void {
     this.fireAuth.signInWithCredential(credential)
       .then((_) => {
-        this.modal.dismiss();
+        this._modal.dismiss();
       }).catch((error) => {
         console.error(error);
       });
@@ -61,6 +61,6 @@ export class LoginDialogComponent {
   }
 
   dismiss() {
-    this.modal.dismiss();
+    this._modal.dismiss();
   }
 }

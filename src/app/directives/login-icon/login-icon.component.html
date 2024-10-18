@@ -1,7 +1,11 @@
-<div *ngIf="fireAuth.user | async as user">
-  <ion-button (click)="logout()" fill="outline" shape="round">
-    <div slot="icon-only" *ngIf="user.displayName">{{ user.displayName[0] }}</div>
-    <ion-icon slot="icon-only" *ngIf="!user.displayName"
+<div *ngIf="fireAuth.user()">
+  <ion-button (click)="logout()"
+    fill="outline"
+    shape="round">
+    <div slot="icon-only"
+      *ngIf="fireAuth.user().displayName">{{ fireAuth.user().displayName[0] }}</div>
+    <ion-icon slot="icon-only"
+      *ngIf="!fireAuth.user().displayName"
       name="person-circle-outline"></ion-icon>
   </ion-button>
 </div>

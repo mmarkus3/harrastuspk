@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { PopoverController } from '@ionic/angular';
+import { StorageService } from '@scandium-oy/ngx-scandium';
 import { Subscription } from 'rxjs';
 import { AddTrainingTypePopoverComponent } from 'src/app/dialog/training-type/training-type.popover';
 import { Template, Type } from 'src/app/models';
-import { StorageService, TrainingTypeService } from 'src/app/services';
+import { TrainingTypeService } from 'src/app/services';
 import { storageKeys } from 'src/app/utility';
 
 @Component({
@@ -25,7 +26,7 @@ export class AddTemplateComponent implements OnInit, OnDestroy {
     private storageService: StorageService,
     private trainingTypeService: TrainingTypeService,
     private popoverCtrl: PopoverController
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({

@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, S
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Plugins } from '@capacitor/core';
 import { TranslateService } from '@ngx-translate/core';
+import { StorageService } from '@scandium-oy/ngx-scandium';
 import { Subscription } from 'rxjs';
 import { Athlete, Training, Type } from 'src/app/models';
-import { StorageService, TemplateService } from 'src/app/services';
+import { TemplateService } from 'src/app/services';
 import { storageKeys } from 'src/app/utility';
 
 const { Modals } = Plugins;
@@ -29,7 +30,7 @@ export class AddTrainingItemComponent implements OnInit, OnDestroy, OnChanges {
     private storageService: StorageService,
     private templateService: TemplateService,
     private translateService: TranslateService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({

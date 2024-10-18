@@ -1,6 +1,6 @@
 {
   "name": "harrastus-pk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Markus Montonen",
   "homepage": "https://montonen.fi/",
   "scripts": {
@@ -9,7 +9,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "firebase deploy --only hosting",
+    "update": "npm run build && npm run deploy"
   },
   "private": true,
   "dependencies": {
@@ -22,17 +24,19 @@
     "@angular/router": "^18.2.8",
     "@capacitor-firebase/authentication": "^6.1.0",
     "@capacitor/core": "6.1.2",
+    "@capacitor/dialog": "^6.0.1",
     "@capacitor/ios": "^6.1.2",
+    "@capacitor/splash-screen": "^6.0.2",
+    "@capacitor/status-bar": "^6.0.1",
     "@ionic/angular": "^8.3.3",
     "@ionic/core": "^8.3.3",
     "@ionic/pwa-elements": "^3.3.0",
-    "@ionic/storage": "^2.2.0",
     "@ionic/storage-angular": "^4.0.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@scandium-oy/ngx-scandium": "^17.0.19",
     "cordova-plugin-apple-login": "^1.0.0",
-    "ion2-calendar": "^3.5.0",
+    "date-fns": "^4.1.0",
     "moment": "^2.26.0",
     "rxjs": "^7.8.1",
     "tslib": "^2.6.2",
