@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
+import { where } from '@angular/fire/firestore';
+import { FirestoreService } from '@scandium-oy/ngx-scandium';
 import { Observable } from 'rxjs';
 import { Template } from '../models';
-import { FirestoreService } from '@scandium-oy/ngx-scandium';
-import { where } from '@angular/fire/firestore';
 
 const itemCollection = 'templates';
 
@@ -17,7 +17,7 @@ export class TemplateService {
   }
 
   remove(item: Template) {
-    return this.firestore.delete<Template>(itemCollection, item);
+    return this.firestore.softDelete<Template>(itemCollection, item);
   }
 
   update(item: Template) {

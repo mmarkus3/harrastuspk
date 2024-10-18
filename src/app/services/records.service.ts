@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
+import { where } from '@angular/fire/firestore';
+import { FirestoreService } from '@scandium-oy/ngx-scandium';
 import { Observable } from 'rxjs';
 import { Record } from '../models';
-import { FirestoreService } from '@scandium-oy/ngx-scandium';
-import { where } from '@angular/fire/firestore';
 
 const itemCollection = 'records';
 
@@ -17,7 +17,7 @@ export class RecordsService {
   }
 
   remove(item: Record) {
-    return this.firestore.delete<Record>(itemCollection, item);
+    return this.firestore.softDelete<Record>(itemCollection, item);
   }
 
   update(item: Record) {
