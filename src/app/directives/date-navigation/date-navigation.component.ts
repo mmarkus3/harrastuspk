@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { SelectDayComponent } from '../select-day/select-day.component';
 
@@ -14,40 +14,28 @@ import { SelectDayComponent } from '../select-day/select-day.component';
     SelectDayComponent,
   ],
 })
-export class DateNavigationComponent implements OnInit, OnChanges {
-  @Input() selected: Date;
-  @Output() selectDate = new EventEmitter<Date>();
-  currentDay: string;
+export class DateNavigationComponent {
+  selected = input.required<Date>();
+  selectDate = output<Date>();
+  currentDay = computed(() => this.selected().toISOString());
 
   constructor() { }
 
-  ngOnInit() {
-    this.setCurrentDay(this.selected);
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.selected) {
-      this.setCurrentDay(this.selected);
-    }
-  }
 
   onDayChange(dateS: string) {
     const date = new Date(dateS);
-    this.setCurrentDay(date);
     this.selectDate.emit(date);
   }
 
   prev() {
-    this.selected.setDate(this.selected.getDate() - 1);
-    this.onDayChange(this.selected.toISOString());
+    const date = this.selected();
+    date.setDate(date.getDate() - 1);
+    this.onDayChange(date.toISOString());
   }
 
   next() {
-    this.selected.setDate(this.selected.getDate() + 1);
-    this.onDayChange(this.selected.toISOString());
-  }
-
-  private setCurrentDay(date: Date) {
-    this.currentDay = date.toISOString();
+    const date = this.selected();
+    date.setDate(date.getDate() + 1);
+    this.onDayChange(date.toISOString());
   }
 }

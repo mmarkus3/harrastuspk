@@ -1,8 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>{{ 'record.title' | translate }}</ion-title>
-    <ion-buttons *ngIf="false" slot="start">
-      <ion-button (click)="dismiss()">
+    <ion-buttons *ngIf="false"
+      slot="start">
+      <ion-button shape="round"
+        (click)="dismiss()">
         <ion-icon name="close-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -10,6 +12,7 @@
 </ion-header>
 <ion-content>
   <div class="ion-padding">
-    <app-add-record [item]="item" (saved)="onSave($event)"></app-add-record>
+    <app-add-record [item]="item"
+      (saved)="onSave($event)"></app-add-record>
   </div>
 </ion-content>

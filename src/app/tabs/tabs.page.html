@@ -1,16 +1,24 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <ion-icon name="home-outline"></ion-icon>
-      <ion-label>{{ 'nav.home' | translate }}</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="stats">
-      <ion-icon name="bar-chart-outline"></ion-icon>
-      <ion-label>{{ 'nav.stats' | translate }}</ion-label>
-    </ion-tab-button>
-    <ion-tab-button tab="history">
-      <ion-icon name="document-text-outline"></ion-icon>
-      <ion-label>{{ 'nav.history' | translate }}</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom"
+      color="secondary">
+      <ion-tab-button tab="home"
+        href="/tabs/home">
+        <ion-icon aria-hidden="true"
+          name="home-outline"></ion-icon>
+        <ion-label>{{ 'nav.home' | translate }}</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="stats"
+        href="/tabs/stats">
+        <ion-icon aria-hidden="true"
+          name="stats-chart-outline"></ion-icon>
+        <ion-label>{{ 'nav.stats' | translate }}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="history"
+        href="/tabs/history">
+        <ion-icon aria-hidden="true"
+          name="document-text-outline"></ion-icon>
+        <ion-label>{{ 'nav.history' | translate }}</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>

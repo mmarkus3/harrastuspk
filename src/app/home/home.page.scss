@@ -1,11 +1,8 @@
-ion-buttons {
-  span {
-    cursor: pointer;
-  }
-}
+.container {
+  margin-left: 1em;
+  margin-right: 1em;
 
-.footer {
-  bottom: 55px;
-  position: absolute;
-  width: 100%;
+  .button-container {
+    margin-top: 1em;
+  }
 }

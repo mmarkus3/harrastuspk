@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, inject } from '@angular/core';
 import { Dialog } from '@capacitor/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '@scandium-oy/ngx-scandium';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-login-icon',
   templateUrl: 'login-icon.component.html',
 })
 export class LoginIconComponent {
-  constructor(public fireAuth: AuthService, private translate: TranslateService, private router: Router) { }
+  private navigtionService = inject(NavigationService);
+
+  constructor(
+    public fireAuth: AuthService,
+    private translate: TranslateService,
+  ) { }
 
   async logout() {
     const translateValues = this.translate.instant(['general.logoutTitle', 'general.logoutText']);
@@ -19,7 +24,7 @@ export class LoginIconComponent {
     });
     if (confirmRet.value === true) {
       this.fireAuth.signOut();
-      this.router.navigate(['/']);
+      this.navigtionService.navigateToHome();
     }
   }
 }

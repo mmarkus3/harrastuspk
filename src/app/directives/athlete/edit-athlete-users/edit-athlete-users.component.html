@@ -1,11 +1,18 @@
-<form class="ion-padding" [formGroup]="formGroup" (ngSubmit)="add()">
+<form class="ion-padding"
+  [formGroup]="formGroup"
+  (ngSubmit)="add()">
   <ion-item>
     <ion-label position="stacked">{{ 'athlete.newUser' | translate }}</ion-label>
     <ion-input [placeholder]="'athlete.userExample' | translate"
-      formControlName="email" type="email"></ion-input>
-    <ion-button color="success" slot="end" type="submit"
+      formControlName="email"
+      type="email"></ion-input>
+    <ion-button shape="round"
+      color="success"
+      slot="end"
+      type="submit"
       [disabled]="!formGroup.valid">
-      <ion-icon name="add-circle-outline" slot="icon-only"></ion-icon>
+      <ion-icon name="add-circle-outline"
+        slot="icon-only"></ion-icon>
     </ion-button>
   </ion-item>
 </form>
@@ -13,13 +20,18 @@
 <ion-list>
   <ion-item *ngFor="let user of users; let i= index">
     <ion-label>{{ user }}</ion-label>
-    <ion-button *ngIf="i !== 0" color="danger" (click)="delete(user)">
+    <ion-button shape="round"
+      *ngIf="i !== 0"
+      color="danger"
+      (click)="delete(user)">
       <ion-icon name="trash-outline"></ion-icon>
     </ion-button>
   </ion-item>
 </ion-list>
 <div>
-  <ion-button expand="full" [disabled]="users.length <1"
+  <ion-button shape="round"
+    expand="full"
+    [disabled]="users.length <1"
     (click)="save()">{{
     'general.save' | translate }}</ion-button>
 </div>

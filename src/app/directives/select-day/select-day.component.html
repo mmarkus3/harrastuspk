@@ -1,4 +1,5 @@
-<ion-button [id]="id()"
+<ion-button shape="round"
+  [id]="id()"
   [disabled]="disabled()"
   [expand]="expand()"
   [color]="color()"
@@ -29,11 +30,14 @@
           [value]="dateValue()"
           (ionChange)="onChange($event)">
           <ion-buttons slot="buttons">
-            <ion-button color="danger"
+            <ion-button shape="round"
+              color="danger"
               (click)="datetime.reset()">{{ 'general.clear' | translate }}</ion-button>
-            <ion-button color="primary"
+            <ion-button shape="round"
+              color="primary"
               (click)="datetime.cancel(true)">{{ 'general.cancel' | translate }}</ion-button>
-            <ion-button color="primary"
+            <ion-button shape="round"
+              color="primary"
               (click)="datetime.confirm(true)">{{ 'general.done' | translate }}</ion-button>
           </ion-buttons>
         </ion-datetime>

@@ -1,7 +1,10 @@
 <div *ngIf="!athlete.template">
   <div [innerHTML]="'template.noTemplate' | translate"></div>
-  <ion-button (click)="addTemplate()">{{ 'template.add' | translate }}</ion-button>
+  <ion-button shape="round"
+    (click)="addTemplate()">{{ 'template.add' | translate }}</ion-button>
 </div>
-<div *ngIf="athlete.template" class="change-template">
-  <ion-button (click)="addTemplate()">{{ 'template.change' | translate }}</ion-button>
+<div *ngIf="athlete.template"
+  class="change-template">
+  <ion-button shape="round"
+    (click)="addTemplate()">{{ 'template.change' | translate }}</ion-button>
 </div>

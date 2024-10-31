@@ -1,16 +1,26 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+import { IonicModule, ModalController } from '@ionic/angular';
 import { StorageService } from '@scandium-oy/ngx-scandium';
 import { Subscription } from 'rxjs';
+import { AppCommonModule } from '../common.module';
 import { EditRecordDialogComponent } from '../dialog/record/edit-record.dialog';
 import { Athlete, Record } from '../models';
 import { RecordsService } from '../services';
 import { storageKeys } from '../utility';
 
 @Component({
-  selector: 'app-stats',
+  standalone: true,
+  selector: 'app-stats-page',
   templateUrl: 'stats.page.html',
   styleUrls: ['stats.page.scss'],
+  imports: [
+    AppCommonModule,
+    CommonModule,
+    FormsModule,
+    IonicModule,
+  ],
 })
 export class StatsPage implements OnInit {
   selectedAthlete: Athlete;

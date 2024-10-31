@@ -1,8 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>{{ 'login.title' | translate }}</ion-title>
-    <ion-buttons *ngIf="false" slot="start">
-      <ion-button (click)="dismiss()">
+    <ion-buttons *ngIf="false"
+      slot="start">
+      <ion-button shape="round"
+        (click)="dismiss()">
         <ion-icon name="close-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -14,12 +16,20 @@
   </div>
   <div class="container ion-padding">
     <div class="buttons">
-      <ion-button (click)="login('ios')" expand="round" color="dark">
-        <ion-icon slot="start" name="logo-apple"></ion-icon>
+      <ion-button shape="round"
+        (click)="login('ios')"
+        expand="round"
+        color="dark">
+        <ion-icon slot="start"
+          name="logo-apple"></ion-icon>
         Sign in with Apple
       </ion-button>
-      <ion-button (click)="login('google')" expand="round" color="danger">
-        <ion-icon slot="start" name="logo-google"></ion-icon>
+      <ion-button shape="round"
+        (click)="login('google')"
+        expand="round"
+        color="danger">
+        <ion-icon slot="start"
+          name="logo-google"></ion-icon>
         Sign in with Google
       </ion-button>
     </div>

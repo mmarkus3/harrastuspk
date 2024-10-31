@@ -1,14 +1,20 @@
-<form class="ion-padding" [formGroup]="formGroup" (ngSubmit)="save()">
+<form class="ion-padding"
+  [formGroup]="formGroup"
+  (ngSubmit)="save()">
   <ion-item>
     <ion-label position="stacked">{{ 'athlete.name' | translate }}</ion-label>
     <ion-input formControlName="name"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">{{ 'athlete.email' | translate }}</ion-label>
-    <ion-input formControlName="email" type="email"></ion-input>
+    <ion-input formControlName="email"
+      type="email"></ion-input>
   </ion-item>
   <div>
-    <ion-button expand="full" type="submit" [disabled]="!formGroup.valid">{{
+    <ion-button shape="round"
+      expand="full"
+      type="submit"
+      [disabled]="!formGroup.valid">{{
       'general.save' | translate }}</ion-button>
   </div>
 </form>

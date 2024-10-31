@@ -2,7 +2,8 @@
   <ion-toolbar>
     <ion-title>{{ 'athlete.title' | translate }}</ion-title>
     <ion-buttons slot="start">
-      <ion-button (click)="select()">
+      <ion-button shape="round"
+        (click)="select()">
         <ion-icon name="close-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -13,7 +14,8 @@
   <!-- Adding -->
   <ng-container *ngIf="adding">
     <app-add-athlete-item (saved)="save($event)"></app-add-athlete-item>
-    <ion-button expand="full"
+    <ion-button shape="round"
+      expand="full"
       (click)="adding= !adding"
       color="light">
       <ion-icon slot="start"
@@ -25,7 +27,8 @@
   <ng-container *ngIf="selectedAthlete">
     <app-edit-athlete-users (saved)="edit($event)"
       [item]="selectedAthlete"></app-edit-athlete-users>
-    <ion-button expand="full"
+    <ion-button shape="round"
+      expand="full"
       (click)="selectedAthlete= null"
       color="light">
       <ion-icon slot="start"
@@ -39,7 +42,8 @@
       <ion-item *ngFor="let athlete of athletes"
         (click)="select(athlete)"
         button="true">
-        <ion-button slot="start"
+        <ion-button shape="round"
+          slot="start"
           shape="round"
           fill="outline"
           color="dark">
@@ -48,7 +52,8 @@
         <ion-label>
           {{ athlete.name }}
         </ion-label>
-        <ion-button slot="end"
+        <ion-button shape="round"
+          slot="end"
           (click)="selectedAthlete= athlete">
           <ion-icon name="create-outline"></ion-icon>
         </ion-button>

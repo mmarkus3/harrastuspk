@@ -10,7 +10,9 @@
   </div>
   <ion-item *ngIf="types; else loadingTemplate">
     <ion-label position="stacked">{{ 'template.type' | translate }}</ion-label>
-    <ion-select [placeholder]="'general.select' | translate"
+    <ion-select aria-label=""
+      label-placement="stacked"
+      [placeholder]="'general.select' | translate"
       interface="popover"
       (ionChange)="onSelect($event)">
       <ion-select-option *ngFor="let type of types"
@@ -19,7 +21,8 @@
       </ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-button (click)="onNewType()"
+  <ion-button shape="round"
+    (click)="onNewType()"
     class="new-type-container"
     fill="outline"
     size="small">{{
@@ -28,7 +31,8 @@
   <ion-list>
     <ion-item *ngFor="let selectedType of selectedTypes">
       {{ selectedType.name_fi }}
-      <ion-button slot="end"
+      <ion-button shape="round"
+        slot="end"
         color="danger"
         (click)="onDelete(selectedType)">
         <ion-icon name="trash-outline"></ion-icon>
@@ -36,7 +40,8 @@
     </ion-item>
   </ion-list>
   <div>
-    <ion-button expand="full"
+    <ion-button shape="round"
+      expand="full"
       type="submit"
       [disabled]="!formGroup.valid ||
       selectedTypes?.length === 0">{{

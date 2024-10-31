@@ -21,7 +21,7 @@ export class NavigationService extends INavigationService {
   }
 
   public async navigateToHome() {
-    return this.router.navigate([`/`]);
+    return this.router.navigate([`/tabs/home`]);
   }
 
   public async navigateIfSame(url: string, guid: string, extras?: NavigationExtras) {

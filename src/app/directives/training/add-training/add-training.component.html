@@ -3,7 +3,9 @@
   (ngSubmit)="save()">
   <ion-item *ngIf="trainingTypes; else loadingTemplate">
     <ion-label position="stacked">{{ 'training.type' | translate }}</ion-label>
-    <ion-select [placeholder]="'general.select' | translate"
+    <ion-select aria-label=""
+      label-placement="stacked"
+      [placeholder]="'general.select' | translate"
       formControlName="type"
       interface="popover">
       <ion-select-option *ngFor="let type of trainingTypes"
@@ -16,7 +18,9 @@
     class="margin">
     <ion-item *ngIf="durations; else loadingTemplate">
       <ion-label position="stacked">{{ 'training.duration' | translate }}</ion-label>
-      <ion-select [placeholder]="'general.select' | translate"
+      <ion-select aria-label=""
+        label-placement="stacked"
+        [placeholder]="'general.select' | translate"
         formControlName="duration"
         interface="popover"
         (ionChange)="onDurationChange($event)">
@@ -35,7 +39,8 @@
         rows="3"></ion-textarea>
     </ion-item>
     <div>
-      <ion-button expand="full"
+      <ion-button shape="round"
+        expand="full"
         type="submit"
         [disabled]="!formGroup.valid">{{
         'general.save' | translate }}</ion-button>

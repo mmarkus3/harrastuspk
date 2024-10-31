@@ -4,7 +4,9 @@
   <ion-item [disabled]="item"
     *ngIf="types; else loadingTemplate">
     <ion-label position="stacked">{{ 'record.type' | translate }}</ion-label>
-    <ion-select [placeholder]="'general.select' | translate"
+    <ion-select aria-label=""
+      label-placement="stacked"
+      [placeholder]="'general.select' | translate"
       formControlName="type"
       interface="popover">
       <ion-select-option *ngFor="let type of types"
@@ -28,7 +30,8 @@
     </ion-item>
   </div>
   <div>
-    <ion-button expand="full"
+    <ion-button shape="round"
+      expand="full"
       type="submit"
       [disabled]="!formGroup.valid">{{
       'general.save' | translate }}</ion-button>

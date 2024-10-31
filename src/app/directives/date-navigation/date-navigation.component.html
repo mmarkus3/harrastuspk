@@ -1,9 +1,16 @@
 <div>
-  <ion-button shape="round" fill="outline" (click)="prev()">
+  <ion-button shape="round"
+    shape="round"
+    fill="outline"
+    (click)="prev()">
     <ion-icon name="arrow-back-circle-outline"></ion-icon>
   </ion-button>
-  <app-select-day [value]="currentDay" (changed)="onDayChange($event)"></app-select-day>
-  <ion-button shape="round" fill="outline" (click)="next()">
+  <app-select-day [value]="currentDay()"
+    (changed)="onDayChange($event)"></app-select-day>
+  <ion-button shape="round"
+    shape="round"
+    fill="outline"
+    (click)="next()">
     <ion-icon name="arrow-forward-circle-outline"></ion-icon>
   </ion-button>
 </div>

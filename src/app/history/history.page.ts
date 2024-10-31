@@ -1,15 +1,28 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 import { StorageService } from '@scandium-oy/ngx-scandium';
 import { map } from 'rxjs/operators';
+import { AppCommonModule } from '../common.module';
+import { SelectDayComponent } from '../directives/select-day/select-day.component';
 import { Athlete, Training } from '../models';
 import { TrainingsService } from '../services';
 import { storageKeys } from '../utility';
 import { compareDates } from '../utility/date';
 
 @Component({
-  selector: 'app-history',
+  standalone: true,
+  selector: 'app-history-page',
   templateUrl: './history.page.html',
   styleUrls: ['./history.page.scss'],
+  imports: [
+    AppCommonModule,
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    SelectDayComponent,
+  ],
 })
 export class HistoryPage implements OnInit {
   currentDay: string;
